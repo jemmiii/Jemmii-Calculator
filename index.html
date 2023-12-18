@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> jemin Calculator</title>
+  <style>
+    body {
+      background-color: rgb(30, 8, 19); /* RGB mix of red and blue */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #calculator {
+      background-color: #f80b0b;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      width: 60px;
+      height: 60px;
+      font-size: 18px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:active {
+      background-color: rgb(13, 1, 1);
+    }
+
+    #result {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <div id="result"></div>
+  <button onclick="appendToResult('1')">1</button>
+  <button onclick="appendToResult('2')">2</button>
+  <button onclick="appendToResult('3')">3</button>
+  <button onclick="appendToResult('+')">+</button>
+  <br>
+  <button onclick="appendToResult('4')">4</button>
+  <button onclick="appendToResult('5')">5</button>
+  <button onclick="appendToResult('6')">6</button>
+  <button onclick="appendToResult('-')">-</button>
+  <br>
+  <button onclick="appendToResult('7')">7</button>
+  <button onclick="appendToResult('8')">8</button>
+  <button onclick="appendToResult('9')">9</button>
+  <button onclick="appendToResult('*')">*</button>
+  <br>
+  <button onclick="appendToResult('0')">0</button>
+  <button onclick="clearResult()">C</button>
+  <button onclick="calculateResult()">=</button>
+  <button onclick="appendToResult('/')">/</button>
+</div>
+
+<script>
+  let resultElement = document.getElementById('result');
+
+  function appendToResult(value) {
+    resultElement.innerText += value;
+  }
+
+  function clearResult() {
+    resultElement.innerText = '';
+  }
+
+  function calculateResult() {
+    try {
+      resultElement.innerText = eval(resultElement.innerText);
+    } catch (error) {
+      resultElement.innerText = 'Error';
+    }
+  }
+</script>
+
+</body>
+</html>
